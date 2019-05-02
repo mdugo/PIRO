@@ -7,7 +7,8 @@ parseIROutputOncomine<-function(file.path,
                                                  "FUNC1.oncomineGeneClass","FUNC1.oncomineVariantClass",
                                                  "FUNC1.transcript","FUNC1.coding",
                                                  "FUNC1.location","FUNC1.polyphen","FUNC1.sift",
-                                                 "dbsnp","maf","X5000Exomes","exac")){
+                                                 "dbsnp","maf","X5000Exomes","exac"),
+                               simplify_exac=TRUE){
   
   vcf.files<-list.files(file.path,recursive=T,"oncomine.tsv",full.names = T)
   annot.files<-list.files(file.path,recursive=T,"full.tsv",full.names = T)
@@ -54,7 +55,9 @@ parseIROutputOncomine<-function(file.path,
                  "Molecular Depth","Molecular Variant Count","Function","Protein Change",
                  "Oncomine Gene Class","Oncomine Variant Class","Transcript","Coding Change",
                  "Location","Plyphen","SIFT","dbSNP","MAF","5000 Exomes","ExAC")
-  x$ExAC<-gsub("\\:.*","",gsub(".*AF_NFE=","",x$ExAC))
+  if(simplify.exac){
+    x$ExAC<-gsub("\\:.*","",gsub(".*AF_NFE=","",x$ExAC))
+    }
   x$ExAC[x$ExAC==""]<-NA
   return(x)
 }
