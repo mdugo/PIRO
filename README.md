@@ -1,2 +1,2 @@
 # PIRO
-This repository contains R function usefula to parse and organize Ion Reporter variant calling output
+This repository contains R functions useful to parse and organize in spreadsheets Ion Reporter variant calling output.
