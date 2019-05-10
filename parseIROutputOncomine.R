@@ -33,6 +33,7 @@ parseIROutputOncomine<-function(file.path,
   x$sampleID<-gsub("_v1.*","",gsub(".*\\/","",vcf.files[1]))
   x$X..locus<-paste(x$CHROM,x$POS,sep=":")
   y<-read.table(annot.files[1],header=T,sep="\t",as.is=T,comment.char="",skip=2)
+  y<-y[!y$type%in%"CNV",]
   if(identical(x$X..locus,y$X..locus)==FALSE){
     print("Mutations in vcf.file and annotation.file are differently ordered")
   }
@@ -43,6 +44,7 @@ parseIROutputOncomine<-function(file.path,
     temp$sampleID<-gsub("_v1.*","",gsub(".*\\/","",vcf.files[i]))
     temp$X..locus<-paste(temp$CHROM,temp$POS,sep=":")
     temp.annot<-read.table(annot.files[i],header=T,sep="\t",as.is=T,comment.char="",skip=2)
+    temp.annot<-temp.annot[!temp.annot$type%in%"CNV",]
     if(identical(temp$X..locus,temp.annot$X..locus)==FALSE){
       print("Mutations in vcf.file and annotation.file are differently ordered")
     }
