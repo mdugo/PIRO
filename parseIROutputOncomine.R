@@ -8,7 +8,7 @@ parseIROutputOncomine<-function(file.path,
                                                  "FUNC1.transcript","FUNC1.coding",
                                                  "FUNC1.location","polyphen","sift",
                                                  "dbsnp","maf","X5000Exomes","exac"),
-                               simplify_exac=TRUE){
+                               simplify.exac=TRUE){
   
   vcf.files<-list.files(file.path,recursive=T,"oncomine.tsv",full.names = T)
   annot.files<-list.files(file.path,recursive=T,"full.tsv",full.names = T)
